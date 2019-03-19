@@ -20,7 +20,7 @@ export default {
   // Search google books for the title
   searchGoogle: function(title) {
     const baseURL = "https://www.googleapis.com/books/v1/volumes";
-    const query = "?q=intitle:" + title + "&printType=books&maxResults=2";
+    const query = "?q=intitle:" + title + "&printType=books&maxResults=5";
     return axios.get(baseURL + query).then(res => {
       console.log("initial res from google is:", res);
       let tempArray = [];

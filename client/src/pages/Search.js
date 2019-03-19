@@ -55,7 +55,13 @@ class Search extends Component {
     console.log("Add this book!", this.state.books);
     console.log("index is:", index);
 
-    API.saveBook(this.state.books[index]);
+    API.saveBook(this.state.books[index]).then(
+      res =>
+        //redirect to Books page
+        (window.location.href = "/")
+      // this.context.router.push("/")
+      // console.log("hello");
+    );
 
     // API.deleteBook(id)
     //   .then(res => this.loadBooks())
@@ -111,7 +117,7 @@ class Search extends Component {
         {/* <Row> */}
         {/* <Col size="md-6"> */}
         <Jumbotron>
-          <h1>Search Google for Books</h1>
+          <h1>Search Google Books</h1>
         </Jumbotron>
         <form>
           <Input
