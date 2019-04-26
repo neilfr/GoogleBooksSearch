@@ -1,14 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//todo update schema to:
-/*title
-authors
-description
-image ... thumbnail
-link... info
-*/
-
 const bookSchema = new Schema({
   title: { type: String, required: true },
   author: { type: String, required: true },

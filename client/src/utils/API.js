@@ -22,7 +22,6 @@ export default {
     const baseURL = "https://www.googleapis.com/books/v1/volumes";
     const query = "?q=intitle:" + title + "&printType=books&maxResults=5";
     return axios.get(baseURL + query).then(res => {
-      console.log("initial res from google is:", res);
       let tempArray = [];
       const base = res.data.items;
       for (let i = 0; i < res.data.items.length; i++) {
@@ -34,9 +33,6 @@ export default {
         tempObj["selfLink"] = base[i].selfLink;
         tempObj["thumbnail"] =
           res.data.items[i].volumeInfo.imageLinks.thumbnail;
-        console.log("tempObj.title is:", tempObj.title);
-        console.log("tempObj.synopsis is:", tempObj.synopsis);
-        console.log("tempObj.author is:", tempObj.author);
         if (
           !(
             tempObj.title === undefined ||
@@ -44,7 +40,6 @@ export default {
             tempObj.author === undefined
           )
         ) {
-          console.log("i got here!");
           tempArray.push(tempObj);
         }
       }

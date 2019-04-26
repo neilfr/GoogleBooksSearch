@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
-// import AddBtn from "../components/AddBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../components/Grid";
 import { Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import BookCard from "../components/BookCard";
 
@@ -21,10 +16,6 @@ class Search extends Component {
     selfLink: ""
   };
 
-  // componentDidMount() {
-  //   this.loadBooks();
-  // }
-
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -32,40 +23,13 @@ class Search extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
-
   addBook = index => {
     console.log("Add this book!", this.state.books);
     console.log("index is:", index);
 
     API.saveBook(this.state.books[index]).then(
-      res =>
-        //redirect to Books page
-        (window.location.href = "/")
-      // this.context.router.push("/")
-      // console.log("hello");
+      res => (window.location.href = "/")
     );
-
-    // API.deleteBook(id)
-    //   .then(res => this.loadBooks())
-    //   .catch(err => console.log(err));
   };
 
   handleBookSearch = event => {
@@ -84,38 +48,14 @@ class Search extends Component {
             thumbnail: "",
             selfLink: ""
           });
-          // console.log("res.data.items is:", res.data.items);
-
-          // console.log({
-          //   foo: res.data.items.volumeInfo,
-          //   authors: "",
-          //   description: "",
-          //   imageLinks: "",
-          //   title: ""
-          // });
-          // this.setState({ books: res.data, title: "", author: "", synopsis: "" });
         })
         .catch(err => console.log(err));
     }
   };
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({
-  //         books: res.data,
-  //         title: "",
-  //         author: "",
-  //         synopsis: "",
-  //         thumbnail: ""
-  //       })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
+
   render() {
     return (
       <Container fluid>
-        {/* <Row> */}
-        {/* <Col size="md-6"> */}
         <Jumbotron>
           <h1>Search Google Books</h1>
         </Jumbotron>
